@@ -1,0 +1,139 @@
+<!--宠物记录pet-->
+<div class="page-header"><h3>
+  Your Pets
+  <span class="code_btn_upt"><a href="__MODULE__/Pet/add">Add</a></span>
+</h3></div>
+<empty name='listPet'>
+  <div class="alert alert-warning" role="alert">You haven't share any pet.</div>
+</empty><notempty name='listPet'>
+<input type="hidden" id="petSize" value="{$listPet|count}">
+<foreach name="listPet" item="pet" key="k">
+<div class="alert alert-info" role="alert">
+  <span>{$pet.pet_name}</span>
+  <span class="pet_edit_span"><a href="">Edit</a></span>
+</div>
+<div class="row">
+  <!-- 1st col -->
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <span>Breed: <strong>{$pet.breed_id}</strong></span>
+          <span class="pet_birth_span">BirthDay: <strong>{$pet.pet_birth}</strong></span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="pet_img"><img src="{$Think.const.IMG_UPLOAD}{$pet.pet_big_photo}" /></div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">My Pet would like/I could provide:</h3>
+      </div>
+      <div class="panel-body">
+        <input type="hidden" class="pet_provide_{$k}" value="{$pet.pet_provide}" />
+        <input type="checkbox" name="pet_provide" value="0">Exercise
+        <input type="checkbox" name="pet_provide" value="1">Company
+      </div>
+    </div>
+  </div>
+  <!-- 2nd col -->
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pet's About</h3>
+      </div>
+      <div class="panel-body">
+        <textarea class="pet_textarea">{$pet.pet_about}</textarea>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pet's Feed</h3>
+      </div>
+      <div class="panel-body">
+        <textarea class="pet_textarea">{$pet.pet_feed}</textarea>
+      </div>
+    </div>
+  </div>
+  <!-- 3rd col -->
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Pet's Notes</h3>
+      </div>
+      <div class="panel-body">
+        <textarea class="pet_textarea" style="height:79px;">{$pet.pet_notes}</textarea>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">My Pet gets on well with/I have:</h3>
+      </div>
+      <div class="panel-body">
+        <input type="hidden" class="pet_have_{$k}" value="{$pet.pet_have}" />
+        <input type="checkbox" name="pet_have" value="0">Garden
+        <input type="checkbox" name="pet_have" value="1">Children
+        <input type="checkbox" name="pet_have" value="2">Other Pets
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">When would your Pet /I like a helper:</h3>
+      </div>
+      <div class="panel-body">
+        <input type="hidden" class="pet_helpTime_{$k}" value="{$pet.pet_helpTime}" />
+        <input type="checkbox" name="pet_helpTime" value="0">Day
+        <input type="checkbox" name="pet_helpTime" value="1">Evening
+        <input type="checkbox" name="pet_helpTime" value="2">Weekend
+        <input type="checkbox" name="pet_helpTime" value="3">Holiday
+      </div>
+    </div>
+  </div><!-- /.col-sm-4 -->
+</div></foreach></notempty>
+<!--//宠物记录pet-->
+
+<!--发布宠物收养记录Beg-->
+<div class="page-header"><h3>
+	Your Beg Records
+	<span class="code_btn_upt"><a href="__MODULE__/Beg/add">Release Beg</a></span>
+</h3></div>
+<empty name='beglist'>
+<div class="alert alert-warning" role="alert">
+    <strong>Hurry Up!</strong> You haven't released any beg.
+</div>
+</empty><notempty name='beglist'>
+<div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
+  <table class="table">
+    <thead><tr>
+      <th>#</th>
+      <th>Pet's name</th>
+      <th>Pet's breed</th>
+      <th>Pet's photo</th>
+      <th>Time</th>
+      <th>Completion</th>
+    </tr></thead>
+    <tbody><!--active success info warning danger-->
+    <volist name="beglist" id="beg" key="k" >
+      <if condition="$k%2 eq 1"><tr class="info">
+      <else /><tr></if>
+        <th scope="row" style="vertical-align: middle;">{$k}</th>
+        <td style="vertical-align: middle;">{$beg.beg_pet.beg_pet_name}</td>
+        <td style="vertical-align: middle;">{$beg.beg_pet.beg_pet_breed}</td>
+        <td style="vertical-align: middle;"><img class="beg_pet_photo" src="{$Think.const.IMG_UPLOAD}{$beg.beg_pet.beg_pet_small_photo}" /></td>
+        <td style="vertical-align: middle;">{$beg.beg.beg_time}</td>
+        <td style="vertical-align: middle;">
+        <if condition="($beg.beg_work eq 0) OR ($beg.beg_work eq 2)"><a class="order_proccess" onclick="completeOrder({$beg.order_id})">Proccessing</a>
+        <elseif condition="$beg.beg_work eq 3" />Waiting the borrower confirm
+        <elseif condition="$beg.beg_work eq 1" />Done
+        <else />Waiting
+        </if>
+        </td>
+      </tr>
+    </volist>
+  </tbody></table>
+</div>
+</notempty>
+<!--//发布宠物收养记录Beg-->
+
+<script src="{$Think.const.JS_URL}owner.js"></script>

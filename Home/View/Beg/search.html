@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pet</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}beg.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--search-->
+<div class="banner-head">
+	<div class="banner-1"> </div>
+		<div class="container">
+      <input type="hidden" id='page_index' value="3" />
+			<h1>Advanced Search</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="container">
+  <div class="page">
+  <div class="bs-example" data-example-id="simple-horizontal-form">
+    <form action="__MODULE__/Beg/complexSearch" class="form-horizontal">
+      <div class="page-header" style="margin-top:0"><h1>Search for your reference</h1></div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" id="pet_detail_tab" style="border:none;">
+          <tbody>
+            <tr>
+              <th scope="row" colspan="2" style="text-align: left;border:none;"><code>Pet's Breed</code></th>
+              <th scope="row" colspan="2" style="text-align: left;border:none;"><code>The Pet gets on well with:</code></th>
+              <th rowspan="4" style="text-align: left;border:none;">
+                <button type="button" class="btn btn-default" id="searchBtn">Search</button>
+                <input type="reset" class="btn btn-default" value="Clear" style="width:80px" />
+              </th>
+            </tr>
+            <tr>
+              <th style="border:none;"></th>
+              <td style="border:none;">
+                <volist name="listBreed" id="breed">
+                  <input type="checkbox" name="breed_id" value="{$breed.breed_id}">{$breed.breed_name}
+                </volist>
+              </td>
+              <th style="border:none;"></th>
+              <td style="border:none;">
+                <input type="checkbox" name="pet_have" value="0">Garden
+                <input type="checkbox" name="pet_have" value="1">Children
+                <input type="checkbox" name="pet_have" value="2">Other Pets
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" colspan="2" style="text-align: left;border:none;"><code>The Pet would like:</code></th>
+              <th scope="row" colspan="2" style="text-align: left;border:none;"><code>The Pet want a helper at:</code></th>
+            </tr>
+            <tr>
+              <th style="border:none;"></th>
+              <td style="border:none;">
+                <input type="checkbox" name="pet_provide" value="0">Exercise
+                <input type="checkbox" name="pet_provide" value="1">Company
+              </td>
+              <th style="border:none;"></th>
+              <td style="border:none;">
+                <input type="checkbox" name="pet_helptime" value="0">Day
+                <input type="checkbox" name="pet_helptime" value="1">Evening
+                <input type="checkbox" name="pet_helptime" value="2">Weekend
+                <input type="checkbox" name="pet_helptime" value="3">Holiday
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
+	<!--//forms-->
+  <!--//search-->
+  <div id="searchResult">
+    <!--list search-->
+    <div class="page-header"><h1>Search Results</h1></div>
+    <div class="container">
+      <div class="blog-top">
+        <!--详情-->
+        <div class="col-md-9 blog-grid" id="searchShow"></div>
+        <!--页码-->
+        <div id="searchPage"></div>
+      </div>
+    </div>
+    <!--//list search-->
+  </div>
+</div></div>
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}laypage/laypage.js"></script>
+<script src="{$Think.const.JS_URL}search.js"></script>
+<script src="{$Think.const.JS_URL}beg.js"></script>
+</body>
+</html> 

@@ -1,0 +1,69 @@
+.col-sm-10 textarea{
+	display: block;
+    width: 100%;
+    height: 100px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    resize: none;
+}
+.beg_release_rst{
+    color: red;
+    font-size: 2em;
+}
+
+/*beg-pet-选取对应的样式*/
+.beg_pet_checkbox{
+    display: block;
+    float: left;
+    width: 50%;
+    margin-top: 10px;
+}
+.beg_pet_checkbox span{
+    display: inline-block;
+}
+.beg_pet_checkbox img{
+    width: 150px;
+    max-height: 100px;
+}
+.beg_pet_checkbox>input[type='checkbox']{
+    vertical-align: middle;
+    width: 30px;
+    height: 20px;
+}
+
+/*添加pet checkbox样式*/
+.col-sm-10>input[type='checkbox']{
+    vertical-align: text-top;
+    width: 30px;
+    height: 16px;
+}
+
+/*beg detail table*/
+#pet_detail_tab tbody tr th, #beg_detail_tab tbody tr th{
+    vertical-align: middle;
+    text-align: right;
+}
+#pet_detail_tab tbody tr textarea{
+    display: block;
+    width: 100%;
+    max-height: 80px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    resize: none;
+}
+#pet_detail_tab tbody tr td input[type='checkbox']{
+    margin-left: 10px;
+    vertical-align: text-top;
+    width: 30px;
+    height: 16px;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' /> 
+<link href="{$Think.const.CSS_URL}bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{$Think.const.JS_URL}jquery.min.js"></script>
+<script src="{$Think.const.JS_URL}login.js"></script>
+<script src="{$Think.const.JS_URL}header.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="{$Think.const.CSS_URL}style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="MyPet" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---->
+<script src="{$Think.const.JS_URL}menu_jquery.js"></script>
+</head>
+<body> 
+<!--header-->	
+<div class="header">
+	<div class="container">
+		 <div class="logo">
+		  	<a href="{$Think.const.SITE_URL}"><img src="{$Think.const.IMG_URL}logo.png" alt="" ></a>
+	  	 </div>
+	   <div class="head-right">
+	   	<div class="head-grid">
+	   		<ul>
+				<!-- <li ><span>+125775858</span></li> -->
+				<li ><span>{$index_phone}</span></li><label>|</label>
+				<li>
+				<empty name="_SESSION.user_firstname">
+				<div id="loginContainer">
+					<a href="#" id="loginButton"><span>Login</span></a>
+					<div id="loginBox">                
+						<form id="loginForm">
+				            <fieldset id="body">
+				                <fieldset>
+				                    <label for="email">Email Address</label>
+				                    <input type="text" name="email" id="email">
+				                </fieldset>
+				                <fieldset>
+				                    <label for="password">Password</label>
+				                    <input type="password" name="password" id="password">
+				                </fieldset>
+				                <input type="button" id="login" value="Sign in">
+				                <label for="checkbox"><input type="checkbox" name='remember_user' value='1' id="checkbox"> <i>Remember me</i></label>
+				            </fieldset>
+				            <span><a href="#">Forgot your password?</a></span>
+				            <span><a href="__MODULE__/User/register">Register?</a></span>
+						</form>
+				    </div>
+				</div>
+				</empty>
+				<notempty name="_SESSION.user_firstname">
+				<div id="loginContainer">
+					<a href="__MODULE__/User/userCenter" id="loginButton" class='login_user_center'><span>{$_SESSION.user_firstname}</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<label>|</label>
+					<a href='__MODULE__/Index/logout' id='index_exit'>Logout</a>
+				</div>
+				<input type="hidden" id='user_type' value="{$_SESSION.user_type}">
+				</notempty>
+			</li>	
+		</ul>
+	</div> 	
+	   <div class="top-nav">
+			  <span class="menu"><img src="{$Think.const.IMG_URL}menu.png" alt=""> </span>
+					<ul>
+						 <li><a href="{$Think.const.SITE_URL}">Home</a></li>
+					   	 <li><a href="__MODULE__/Beg/listBeg">Beg list</a></li>
+					   	 <li><a href="__MODULE__/Borrower/listBorrower">Borrowers</a></li>
+					   	 <li><a href="__MODULE__/Beg/complexSearch">Search</a></li>
+					   	 <li><a href="__MODULE__/Case/showCase">Cases</a></li>
+					   	 <li><a href="__MODULE__/Contact/contact">Contact</a></li>
+						<div class="clearfix"> </div>
+					</ul>
+
+					<!--script-->
+				<script>
+					$("span.menu").click(function(){
+						$(".top-nav ul").slideToggle(500, function(){
+						});
+					});
+			</script>
+		</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.login_user_center').click(function(){
+		var pathName = window.document.location.pathname;
+		var path = pathName.substring(0, pathName.substr(1).indexOf('/')+1);
+		location.href = path + '/index.php/Home/User/userCenter';
+	});
+});
+</script>
+</body>
+</html>

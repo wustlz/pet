@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+  <!--nav-->
+  <include file="Public:nav" />
+  <!--//nav-->
+  <!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Owners</h1></div>
+    <div class="main-content">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>phone</th>
+        <th>location</th>
+        <th>Last login time</th>
+        <th>beg count</th>
+        <th style="width: 3.5em;"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <volist name="ownerlist" id="owner" key="k" >
+      <tr>
+        <td>{$k}</td>
+        <td>{$owner.user.user_firstname}</td>
+        <td>{$owner.user.user_lastname}</td>
+        <td>{$owner.userLogin.user_email}</td>
+        <td>{$owner.user.user_phone}</td>
+        <td>{$owner.user.user_location}</td>
+        <td>{$owner.userLogin.login_time}</td>
+        <td>{$owner.beg_count}</td>
+        <td><a href="__CONTROLLER__/delOwner/id/{$owner.user.user_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a></td>
+      </tr>
+    </volist>
+    </tbody>
+  </table>
+  <notempty name='backMsg'><div style="color:#ff0000;">{$backMsg}</div></notempty>
+  <!--页码-->
+  <div class="list_page">{$pagelist}</div>
+  <!--//页码-->
+</div></div>
+</body></html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+
+  <!--nav-->
+  <include file="Public:nav" />
+  <!--//nav-->
+
+  <!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Administrator Manage</h1></div>
+    <div class="main-content">
+      <div class="btn-toolbar list-toolbar">
+        <a class="btn btn-primary" href="__CONTROLLER__/addAdmin"><i class="fa fa-plus"></i> New Administrator</a>
+        <div class="btn-group"></div>
+      </div>
+      <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Admin Name</th>
+          <th>Admin Email</th>
+          <th>Admin phone</th>
+          <th>Last login time</th>
+          <th style="width: 3.5em;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <volist name="adminlist" id="admin" key="k" >
+        <tr>
+          <td>{$k}</td>
+          <td>{$admin.admin_name}</td>
+          <td>{$admin.admin_email}</td>
+          <td>{$admin.admin_phone}</td>
+          <td>{$admin.admin_time}</td>
+          <td><a href="__CONTROLLER__/delAdmin/id/{$admin.admin_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a></td>
+        </tr>
+      </volist>
+      </tbody>
+      </table>
+      <notempty name='backMsg'><div style="color:#ff0000;">{$backMsg}</div></notempty>
+    </div>
+  </div>
+</body></html>

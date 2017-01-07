@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+
+  <!--左侧菜单-->
+  <include file="Public:nav" />
+  <!--//左侧菜单-->
+  <!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Borrowers</h1></div>
+    <div class="main-content">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>phone</th>
+        <th>location</th>
+        <th>Last login time</th>
+        <th>photo</th>
+        <th>profile</th>
+        <th>loving count</th>
+        <th style="width: 3.5em;"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <volist name="borrowerlist" id="borrower" key="k" >
+      <tr>
+        <td style="vertical-align: middle;">{$k}</td>
+        <td style="vertical-align: middle;">{$borrower.user.user_firstname} {$borrower.user.user_lastname}</td>
+        <td style="vertical-align: middle;">{$borrower.userLogin.user_email}</td>
+        <td style="vertical-align: middle;">{$borrower.user.user_phone}</td>
+        <td style="vertical-align: middle;">{$borrower.user.user_location}</td>
+        <td style="vertical-align: middle;">{$borrower.userLogin.login_time}</td>
+        <td><img style="max-width: 100px" src="{$Think.const.IMG_UPLOAD}{$borrower.borrower.borrower_photo}" /></td>
+        <td style="vertical-align: middle;"><textarea style="resize:none;width:200px;border:none;">{$borrower.borrower.borrower_profile}</textarea></td>
+        <td style="vertical-align: middle;">{$borrower.borrower.borrower_count}</td>
+        <td style="vertical-align: middle;"><a href="__CONTROLLER__/delBorrower/id/{$borrower.user.user_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a></td>
+      </tr>
+    </volist>
+    </tbody>
+  </table>
+  <!--页码-->
+  <div class="list_page">{$pagelist}</div>
+  <!--//页码-->
+</div></div>
+</body></html>

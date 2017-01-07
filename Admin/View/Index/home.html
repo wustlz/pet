@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+
+  <!--nav-->
+  <include file="Public:nav" />
+  <!--//nav-->
+
+  <style type="text/css">
+    .table>tbody>tr>td{
+      vertical-align: middle;
+    }
+    .table>tbody>tr>td>textarea{
+      resize:none;
+      width:80%;
+      height:70px;
+      border-radius:4px;
+      border:1px solid #c8cccf;
+      -web-kit-appearance:none;
+      -moz-appearance: none;
+    }
+    .table>tbody>tr>td>input[type="text"]{
+      box-sizing: border-box;
+      text-align:center;
+      font-size:1.1em;
+      border-radius:4px;
+      border:1px solid #c8cccf;
+      color:#000000;
+      -web-kit-appearance:none;
+      -moz-appearance: none;
+      display:block;
+      outline:0;
+      padding:0 1em;
+      text-decoration:none;
+      text-align: left;
+      width:80%;
+    }
+    input[type="submit"]{
+      vertical-align:middle;
+      margin:8px 0px;
+      margin-left: 36%;
+      line-height:18px;
+      font-size:1.2em;
+      border-radius:4px;
+      border:1px solid #FFEC8B;
+      width: 100px;
+      background-color: #FFFFE0;
+    }
+    .back_info{
+      color: #FF0000;
+    }
+  </style>
+
+  <!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Web Home Page</h1></div>
+    <div class="main-content">
+      <notempty name='backInfo'>
+        <foreach name="backInfo" item="info" key="k" >
+          <div class='back_info'>{$info}</div>
+        </foreach>
+      </notempty>
+      <form action="__MODULE__/Index/frontHome" method="post">
+        <table class="table">
+          <thead>
+            <tr>
+              <th width="80px">Item</th>
+              <th>Content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Phone</td>
+              <td><input style="width:200px;" type="text" name="index_phone" value="{$index.index_phone}" /></td>
+            </tr>
+            <tr>
+              <td>About</td>
+              <td><textarea name="index_about">{$index.index_about}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title1</td>
+              <td><input type="text" name="index_title1" value="{$index.index_title1}" /></td>
+            </tr>
+            <tr>
+              <td>Text1</td>
+              <td><textarea name="index_text1">{$index.index_text1}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title2</td>
+              <td><input type="text" name="index_title2" value="{$index.index_title2}" /></td>
+            </tr>
+            <tr>
+              <td>Text2</td>
+              <td><textarea name="index_text2">{$index.index_text2}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title3</td>
+              <td><input type="text" name="index_title3" value="{$index.index_title3}" /></td>
+            </tr>
+            <tr>
+              <td>Text3</td>
+              <td><textarea name="index_text3">{$index.index_text3}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title4</td>
+              <td><input type="text" name="index_title4" value="{$index.index_title4}" /></td>
+            </tr>
+            <tr>
+              <td>Text4</td>
+              <td><textarea name="index_text4">{$index.index_text4}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title5</td>
+              <td><input type="text" name="index_title5" value="{$index.index_title5}" /></td>
+            </tr>
+            <tr>
+              <td>Text5</td>
+              <td><textarea name="index_text5">{$index.index_text5}</textarea></td>
+            </tr>
+            <tr>
+              <td>Title6</td>
+              <td><input type="text" name="index_title6" value="{$index.index_title6}" /></td>
+            </tr>
+            <tr>
+              <td>Text6</td>
+              <td><textarea name="index_text6">{$index.index_text6}</textarea></td>
+            </tr>
+          </tbody>
+        </table>
+        <input type="hidden" name="index_id" value="{$index.index_id}" />
+        <input type="submit" value="Update" />
+      </form>
+    </div>
+  </div>
+</body></html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}register.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<script src="{$Think.const.JS_URL}jquery.min.js"></script>
+	<script src="{$Think.const.JS_URL}register.js"></script>
+</head>
+<!-- <body style="background-color:#2F4F4F"> -->
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<div class="banner-head">
+	<div class="banner-1"> </div>
+		<div class="container">
+			<h1>Register</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="main">
+<h3><notempty name='registerInfo'>
+<foreach name="registerInfo" item="vo" key="k" >
+   <div class='registerInfo'>{$vo}</div>
+</foreach>
+</notempty></h3>
+<form action="__MODULE__/User/register" method="post">
+	<div class="user_type">
+		<span>I&nbsp;&nbsp;&nbsp;&nbsp;am&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+     	<input type="radio" class="text" name='user_type' value='1' checked="checked">&nbsp;Owner
+     	<input type="radio" class="text" name='user_type' value='2' style='margin-left: 8px;'>&nbsp;Borrower
+    </div>
+    <div class="lable">
+     	<input style='margin-left: 0px;' name='user_firstname' type="text" class="text" placeholder="First Name">
+     	<input style='margin-left: 8px;' name='user_lastname' type="text" class="text" placeholder="Last Name">
+    </div>
+    <div class="clear"> </div>
+    <div class="lable-2">
+	    <input type="text" class="text" name="user_email" placeholder="your@email.com">
+	    <input type="password" class="text" name="user_password" placeholder="Input the password">
+    	<input type="password" class="text" name="user_password2" placeholder="Repeat the password">
+	</div>
+	<div class="clear"> </div>
+	<div class="lable-2">
+    	<input type="text" class="text" name="user_phone" placeholder="your phone number">
+    	<input type="text" class="text" name='user_location' placeholder="your location">
+    </div>
+    <div class="clear"> </div>
+	<h3>By creating an account, you agree to our <span><a href="#">Terms & Conditions</a> <span></h3>
+	<div class="submit">
+		<input type="submit" id='user_register' value="Create account" >
+	</div>
+	<div class="clear"> </div>
+</form>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+</body>
+</html> 

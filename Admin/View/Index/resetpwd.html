@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+
+<body class=" theme-blue">
+    <!--top--> 
+    <include file="Public:top" />
+    <!--//top-->
+    <!--content-->
+    <div class="dialog">
+        <div class="panel panel-default">
+            <p class="panel-heading no-collapse">Reset password</p>
+            <div class="panel-body">
+                <form action="__MODULE__/Index/resetpwd" method="post">
+                    <div class="form-group">
+                        <label>Old password</label>
+                        <input type="password" name='password' class="form-control span12">
+                    </div>
+                    <div class="form-group">
+                        <label>New password</label>
+                        <input type="password" name='password1' class="form-control span12">
+                    </div>
+                    <div class="form-group">
+                        <label>Repeat password</label>
+                        <input type="password" name='password2' class="form-control span12">
+                    </div>
+                    <notempty name='error_msg'>
+                    <div class="form-group"><label style="color:#ff0000;">{$error_msg}</label></div>
+                    </notempty>
+                    <div class="form-group">
+                        <input class="" type="submit" value="Reset">
+                        <input class="" type="button" value="Cancel">
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--//content-->
+</body></html>

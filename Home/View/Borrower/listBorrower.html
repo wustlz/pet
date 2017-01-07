@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Borrowers</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+<style type="text/css">
+.list_page{
+  text-align: center;
+  font-size: 1.5em;
+}
+</style>
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"><input type="hidden" id='page_index' value="2" /></div>
+		<div class="container">
+			<h1>Borrowers</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="gallery">
+  <div class="container">
+    <volist name="borrowerList" id="borrower" key="k" >
+    <!-- 3幅图一行 -->
+    <if condition="$k%3 eq 1"><div class="grid"><else /></if>
+    <div class="col-md-4 gallery-top">
+      <a href="__CONTROLLER__/detailBorrower/id/{$borrower.borrower.borrower_id}" rel="title" class="b-link-stripe b-animate-go thickbox">
+        <figure class="effect-oscar">
+          <img style="width: 330px; height: 220px;" src="{$Think.const.IMG_UPLOAD}{$borrower.borrower.borrower_photo}" alt=""/>
+          <figcaption>
+            <h2>{$borrower.user.user_firstname} {$borrower.user.user_lastname}</h2>
+            <p>{$borrower.borrower.borrower_profile}</p>
+          </figcaption>     
+        </figure>
+    </a></div>
+    <if condition="$k%3 eq 0"><div class="clearfix"> </div></div><else /></if>
+    </volist>
+    <!--页码页表-->
+    <div class="list_page">{$pagelist}</div>
+    <!--//页码页表-->
+</div></div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+</body>
+</html> 

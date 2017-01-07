@@ -1,0 +1,21 @@
+<div class="blog-grid3">
+  <div class="blog-grid1">
+    <div class="text-blog">
+      <span>{$beg.beg_ymd.day}</span>
+      <small>{$beg.beg_ymd.month}<br>{$beg.beg_ymd.year}</small>
+      <div class="clearfix"> </div>
+    </div>
+    <ul>
+      <li><a class="heart" onclick="order({$beg.beg.beg_id})"><i class="glyphicon glyphicon-heart"></i></a></li>
+    </ul>
+  </div>
+  <div class="blog-grid2">
+    <a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}"><img style="width: 700px;" src="{$Think.const.IMG_UPLOAD}{$beg.beg.beg_photo}" class="img-responsive" alt=""></a>
+    <div class="blog-text">
+      <h5><a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}">{$beg.beg.beg_title}</a></h5>
+      <p>{$beg.beg.beg_notes}</p>           
+    </div>
+    <a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}" class="more">Read More</a>
+  </div>
+  <div class="clearfix"> </div>
+</div>

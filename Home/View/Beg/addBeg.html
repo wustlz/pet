@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Release Beg</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}beg.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"> </div>
+		<div class="container">
+			<h1>Release Beg</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="container">
+  <div class="page">
+  <!--添加结果信息-->
+  <notempty name='back_info'>
+  <if condition="$back_info eq 'success'">
+  <div class="page-header"><h3><span style="color:#008000">Release Successfully</span></h3></div>
+  <else /><div class="page-header"><h3><span style="color:#FF0000">Release Failed</span></h3></div>
+  <!--输出错误信息-->
+    <foreach name="back_info" item="info" ><div class="beg_release_rst">{$info}</div></foreach>
+  </if>
+  </notempty> 
+  <!--//添加结果信息-->
+  <div class="bs-example" data-example-id="simple-horizontal-form">
+    <form action="__CONTROLLER__/add" class="form-horizontal" method="post" enctype="multipart/form-data">
+      <div class="page-header" style="margin-top:0"><h1>Your contact</h1></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="beg_email" value="{$userLogin.user_email}" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="beg_phone" value="{$user.user_phone}" placeholder="Please input your phone number">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">location</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="beg_location" value="{$user.user_location}" placeholder="Please input your detail address">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Beg's Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="beg_title" placeholder="Please input the beg's title">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet(s)</label>
+        <div class="col-sm-10">
+          <foreach name='listPet' item='pet'>
+            <div class="beg_pet_checkbox">
+              <input type="checkbox" name="pet_ids[]" value="{$pet.pet_id}" >
+              <img src="{$Think.const.IMG_UPLOAD}{$pet.pet_small_photo}" style="max-width:150px;height:100px;" />
+              <span>{$pet.pet_name}</span>
+            </div>
+          </foreach>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Notes</label>
+        <div class="col-sm-10">
+          <textarea name='beg_notes' placeholder='Other things should be careful...'></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Release</button>
+          <input type="reset" class="btn btn-default" value="Reset">
+        </div>
+      </div>
+    </form>
+  </div>
+	<!--//forms-->
+	</div>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}My97DatePicker/WdatePicker.js"></script>
+</body>
+</html> 

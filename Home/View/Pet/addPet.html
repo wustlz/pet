@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pet</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}beg.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"> </div>
+		<div class="container">
+			<h1>Add Pet</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="container">
+  <div class="page">
+  <!--添加结果信息-->
+  <notempty name='back_info'>
+  <if condition="$back_info eq 'success'">
+  <div class="page-header"><h3><span style="color:#008000">Add Successfully</span></h3></div>
+  <else /><div class="page-header"><h3><span style="color:#FF0000">Add Failed</span></h3></div>
+  <!--输出错误信息-->
+    <foreach name="back_info" item="info" ><div class="beg_release_rst">{$info}</div></foreach>
+  </if>
+  </notempty> 
+  <!--//添加结果信息-->
+  <div class="bs-example" data-example-id="simple-horizontal-form">
+    <form action="__CONTROLLER__/add" class="form-horizontal" method="post" enctype="multipart/form-data">
+      <div class="page-header" style="margin-top:0"><h1>Pet Information</h1></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="pet_name" placeholder="Alfie (Charlie, David Bowie, etc.)">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's Breed</label>
+        <div class="col-sm-10">
+          <select name="breed_id" class="form-control">
+            <option value="">Please choose</option>
+            <volist name="listBreed" id="breed">
+              <option value="{$breed.breed_id}">{$breed.breed_name}</option>
+            </volist>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's Birth</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control Wdate" name="pet_birth" onClick="WdatePicker()" placeholder="Select the date of birth">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's About</label>
+        <div class="col-sm-10">
+          <textarea name='pet_about' placeholder='My pets like walking... and hate ...'></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's Feed</label>
+        <div class="col-sm-10">
+          <textarea name='pet_feed' placeholder='My pets favorite food are...'></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Pet's photo</label>
+        <div class="col-sm-10">
+          <div id="preview">
+              <img id="imghead" border="0" src="{$Think.const.IMG_URL}photo_icon.png" width="120" height="120" onclick="$('#previewImg').click();">
+          </div>
+          <input type="file" name="pet_photo" onchange="previewImage(this)" style="display: none;" id="previewImg">
+          <span class="photo_warn">Picture scale should be 3:2</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="pet_question">My Pet gets on well with/I have:</label>
+        <div class="col-sm-10"></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+        <input type="checkbox" name="pet_have[]" value="0">Garden<br/>
+        <input type="checkbox" name="pet_have[]" value="1">Children<br/>
+        <input type="checkbox" name="pet_have[]" value="2">Other Pets
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="pet_question">My Pet would like/I could provide:</label>
+        <div class="col-sm-10"></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+        <input type="checkbox" name="pet_provide[]" value="0">Exercise<br/>
+        <input type="checkbox" name="pet_provide[]" value="1">Company
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="pet_question">When would your Pet /I like a helper:</label>
+        <div class="col-sm-10"></div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+        <input type="checkbox" name="pet_helpTime[]" value="0">Day<br/>
+        <input type="checkbox" name="pet_helpTime[]" value="1">Evening<br/>
+        <input type="checkbox" name="pet_helpTime[]" value="2">Weekend<br/>
+        <input type="checkbox" name="pet_helpTime[]" value="3">Holiday
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Notes</label>
+        <div class="col-sm-10">
+          <textarea name='pet_notes' placeholder='Other thing should be careful...'></textarea>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Add</button>
+          <input type="reset" class="btn btn-default" value="Reset" style="width:80px" />
+        </div>
+      </div>
+    </form>
+  </div>
+	<!--//forms-->
+	</div>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}My97DatePicker/WdatePicker.js"></script>
+<script src="{$Think.const.JS_URL}avatar.js"></script>
+</body>
+</html> 

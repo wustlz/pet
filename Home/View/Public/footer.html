@@ -1,0 +1,48 @@
+<div class="footer ">
+ 	<div class="footer-1"> </div>
+	<div class="container">
+		<div class="footer_top">
+	  		<div class="col-md-3 footer-head">
+				<h4>Navigation</h4>
+			  	<ul class="list1">
+				  	<li><a href="{$Think.const.SITE_URL}">Home</a></li>
+					<li><a href="__MODULE__/Beg/listBeg">Beg list</a></li>
+					<li><a href="__MODULE__/Borrower/listBorrower">Borrowers</a></li>
+					<li><a href="__MODULE__/Case/showCase">Cases</a></li>
+					<li><a href="__MODULE__/Contact/contact">Contact</a></li>
+			  	</ul>
+			</div>
+		  	
+			<div class="col-md-3 footer-head">
+				<h4>Recent Cases</h4>
+				<foreach name="case_info" item="case">
+					<div class="footer-new">
+					<div class="footer-new1">
+						<a href="__MODULE__/Case/showCase"><img src="{$Think.const.IMG_UPLOAD}{$case.case_small_photo}" class="img-responsive" alt=""></a>
+					</div>
+					<div class="footer-new2">
+						<p><a href="__MODULE__/Case/showCase">{$case.case_title}</a></p>
+					</div>
+					<div class="clearfix"> </div>
+					</div>
+				</foreach>
+			</div>
+			<div class="col-md-3 footer-head">
+				<h4>Follow Us</h4>
+				<ul class="socials">
+	                <li><a href="#"><i ></i></a></li>
+	                <li><a href="#"><i class="dribbble"></i></a></li>
+	                <li><a href="#"><i class="twitter"></i></a></li>
+              	</ul>
+			</div>
+			<div class="col-md-3 footer-head1">
+			  	<h4>Location</h4>
+             	<p><b>Share Pet</b></p>
+              	<!-- <p>Masagni dolores</p> -->
+               	<p>{$index_phone}</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="footer-bottom"><p>Copyright &copy; <a href="__ROOT__/index.php/Admin/Index/index" target="_blank">2016</a> All rights reserved.Template from <a href="http://www.cssmoban.com/" target="_blank">cssmoban</a></p></div>
+	</div>
+</div>

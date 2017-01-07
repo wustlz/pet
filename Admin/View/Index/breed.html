@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+
+  <!--nav-->
+  <include file="Public:nav" />
+  <!--//nav-->
+  <style type="text/css">
+    .table>tbody>tr>td{
+      vertical-align: middle;
+    }
+    .tab_input{
+      float: left;
+      box-sizing: border-box;
+      text-align:center;
+      font-size:1.1em;
+      border-radius:4px;
+      border:1px solid #c8cccf;
+      color:#000000;
+      -web-kit-appearance:none;
+      -moz-appearance: none;
+      display:block;
+      outline:0;
+      padding:0 1em;
+      text-decoration:none;
+      text-align: left;
+      width:150px;
+    }
+    .subBtn{
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Breed Manage</h1></div>
+    <div class="main-content">
+      <table class="table" id='breedTab'>
+      <thead>
+        <tr>
+          <th width="20px">#</th>
+          <th width="150px">Breed Name</th>
+          <th width="20px"></th>
+          <th width="20px"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <volist name="listBreed" id="breed" key="k" >
+        <tr>
+          <td>{$k}</td>
+          <td>{$breed.breed_name}</td>
+          <td class="uptBreed"><a><i class="fa fa-pencil"></i></a></td>
+          <td><a href="__CONTROLLER__/delBreed/id/{$breed.breed_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a></td>
+          <td style="display:none">{$breed.breed_id}</td>
+        </tr>
+      </volist>
+        <tr>
+          <td colspan="4" id="addBreed"><i class="fa fa-fw fa-plus"></i></td>
+        </tr>
+      </tbody>
+      </table>
+      <notempty name='backMsg'><div style="color:#ff0000;">{$backMsg}</div></notempty>
+    </div>
+  </div>
+
+<script type="text/javascript">
+  $(function(){
+    <!--add Breed UI-->
+    $('#addBreed').click(function(){
+      // 获取当前点击行的索引
+      var trSeq = $(this).parent().parent().find("tr").index($(this).parent());
+      // 添加新行
+      var newRow = '<tr><td></td>'+
+                   '<td colspan="3"><input class="tab_input" type="text" />'+
+                   '<a class="subBtn" onClick="addBreed()"><i class="fa fa-fw fa-check"></i></a>'+
+                   '<a class="subBtn" onClick="cancel()"><i class="fa fa-fw fa-times"></i></a></td>'+
+                   '</tr>';
+      $("#breedTab").find('tr').eq(trSeq).after(newRow);
+      // 隐藏添加按钮
+      $('#addBreed').hide();
+    });
+
+    <!--update Breed UI-->
+    $('.uptBreed').click(function(){
+      // 获取当前点击行的索引
+      var trSeq = $(this).parent().parent().find("tr").index($(this).parent());
+      // 获取当前行的breed name
+      var breed_name = $(this).parent().find("td").eq(1).text().trim();
+      var breed_id = $(this).parent().find("td").eq(4).text().trim();
+      // 修改name列
+      var newTd = '<input class="tab_input" type="text" value="'+breed_name+'" />'+
+                  '<a class="subBtn" onClick="uptBreed('+breed_id+')"><i class="fa fa-fw fa-check"></i></a>'+
+                  '<a class="subBtn" onClick="cancel()"><i class="fa fa-fw fa-times"></i></a>';
+      $(this).parent().find("td").eq(1).html(newTd);
+      // 隐藏添加按钮
+      $('#addBreed').hide();
+      $(this).parent().find("td").eq(2).hide();
+      $(this).parent().find("td").eq(3).hide();
+    });
+
+  });
+
+  <!--add Breed-->
+  function addBreed(){
+    // 获取添加的breed值
+    var breed_name = $('.tab_input').val();
+    var pathName = window.document.location.pathname;
+    var path = pathName.substring(0, pathName.substr(1).indexOf('/')+1);
+    if(breed_name!=''){
+      location.href = path + '/index.php/Admin/Breed/addBreed/name/' + breed_name;
+    } else {
+      alert('Please input Breed Name');
+      return;
+    }
+  }
+
+  <!--update Breed-->
+  function uptBreed(breed_id){
+    // 获取添加的breed值
+    var breed_name = $('.tab_input').val();
+    var pathName = window.document.location.pathname;
+    var path = pathName.substring(0, pathName.substr(1).indexOf('/')+1);
+    if(breed_name!=''){
+      location.href = path + '/index.php/Admin/Breed/uptBreed/id/'+breed_id+'/name/' + breed_name;
+    } else {
+      alert('Please input Breed Name');
+      return;
+    }
+  }
+
+  <!--cancel Breed-->
+  function cancel(){
+    var pathName = window.document.location.pathname;
+    var path = pathName.substring(0, pathName.substr(1).indexOf('/')+1);
+    location.href = path + '/index.php/Admin/Breed/breedlist';
+  }
+</script>
+</body></html>

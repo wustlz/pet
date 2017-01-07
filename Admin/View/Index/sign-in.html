@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+
+<body class=" theme-blue">
+    <!--top--> 
+    <include file="Public:top" />
+    <!--//top-->
+    <!--content-->
+    <div class="dialog">
+        <div class="panel panel-default">
+            <p class="panel-heading no-collapse">Sign In</p>
+            <div class="panel-body">
+                <form action="__MODULE__/Index/loginAdmin" method="post">
+                <!-- <form action="__ROOT__/index.php/Home/Admin/loginAdmin" method="post"> -->
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name='admin_name' class="form-control span12">
+                    </div>
+                    <div class="form-group">
+                    <label>Password</label>
+                        <input type="password" name='admin_password' class="form-controlspan12 form-control">
+                    </div>
+                    <notempty name='error_msg'>
+                    <div class="form-group"><label style="color:#ff0000;">Wrong username or password</label></div>
+                    </notempty>
+                    <input class="btn btn-primary pull-right" type="submit" value="Sign In">
+                    <label class="remember-me"><input type="checkbox" name='remember_admin' value="1">Remember me</label>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <!-- <p><a href="reset-password.html">Forgot your password?</a></p> -->
+    </div>
+    <!--//content-->
+</body></html>

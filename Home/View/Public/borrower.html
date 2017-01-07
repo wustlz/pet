@@ -1,0 +1,104 @@
+<!--Profile-->
+<div class="grid_3 grid_4">
+  <div class="page-header"><h3>Borrower Profile</h3></div>
+  <div class="row">
+    <div class="col-sm-4" style='width:30%'>
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Your Photo</h3></div>
+        <div class="panel-body" style="height:300px;">
+        <!--还未上传头像-->
+        <empty name="borrower.borrower_photo">
+        <div class="user_avatar">
+        <form action="__MODULE__/borrower/uploadPhoto" method="post" enctype="multipart/form-data">
+          <div id="preview">
+              <img id="imghead" border="0" src="{$Think.const.IMG_URL}photo_icon.png" style="max-width:490px;max-height=:200px; " onclick="$('#previewImg').click();">
+          </div>
+          <input type="file" name="borrower_photo" onchange="previewImage(this)" style="display: none;" id="previewImg" />
+          <span class="photo_warn">Picture scale should be 3:2</span>
+          <input class="user_upt_btn" type="submit" value='submit' />
+        </form></div>
+        </empty><notempty name="borrower.borrower_photo">
+        <div class="user_avatar" id='upt_avatar_html' style="display:none;">
+          <form action="__MODULE__/borrower/uploadPhoto" method="post" enctype="multipart/form-data">
+            <div id="preview">
+                <img id="imghead" border="0" src="{$Think.const.IMG_URL}photo_icon.png" style="max-width:490px;max-height=:200px; " onclick="$('#previewImg').click();">
+            </div>
+            <input type="file" name="borrower_photo" onchange="previewImage(this)" style="display: none;" id="previewImg" />
+            <div class="photo_warn">Picture scale should be 3:2</div>
+            <input class="upt_btn_two" type="submit" value='Upload' />
+            <input class="upt_btn_two" type='button' value="Cancel" onclick="upt_cancel()" />
+          </form>
+        </div>
+        <div class="user_avatar">
+          <img src="{$Think.const.IMG_UPLOAD}{$borrower.borrower_photo}">
+          <input class="user_upt_btn" type='button' value="Edit" onclick="upt_avatar()" />
+        </div>
+        </notempty>
+        </div>
+      </div>            
+    </div>
+    <div class="col-sm-4" style='width:70%'>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Your Profile</h3>
+        </div>
+        <div class="panel-body" style="height:300px;">
+          <textarea class="user_profile" readonly="true">{$borrower.borrower_profile}</textarea>
+          <input id='upt_profile' class="user_upt_btn" type='button' value="Edit" onclick="upt_profile()" />
+          <input id='sub_profile' style="display:none" type='button' value="Submit" onclick="sub_profile()" />
+          <input id='cancel_profile' style="display:none" type='button' value="Cancel" onclick="upt_cancel()" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--//profile-->
+<!--records-->
+<div class="page-header"><h3>Your Records</h3></div>
+  <empty name="orderlist">
+  <div class="alert alert-warning" role="alert">
+      <strong>Cheer Up!</strong> You haven't accpeted any beg.
+  </div>
+  </empty>
+  <notempty name="orderlist">
+  <div class="bs-example" data-example-id="contextual-table" style="border: 1px solid #eee">
+  <table class="table">
+    <thead><tr>
+      <th>#</th>
+      <th>Owner's name</th>
+      <th>Owner's email</th>
+      <th>Owner's phone</th>
+      <th>Time</th>
+      <th>Pet's photo</th>
+      <th>Completion</th>
+    </tr></thead>
+    <tbody><!--active success info warning danger-->
+    <volist name="orderlist" id="record" key="k" >
+      <if condition="$k%2 eq 1"><tr class="info">
+      <else /><tr></if>
+        <th scope="row" style="vertical-align: middle;">{$k}</th>
+        <td style="vertical-align: middle;">{$record.beg.user_firstname} {$record.beg.user_lastname}</td>
+        <td style="vertical-align: middle;">{$record.beg.beg_email}</td>
+        <td style="vertical-align: middle;">{$record.beg.beg_phone}</td>
+        <td style="vertical-align: middle;">{$record.order.order_create}</td>
+        <td style="vertical-align: middle;" class="beg_pet_img">
+          <volist name="record['beg']['listPet']" id="pet">
+            <img src="{$Think.const.IMG_UPLOAD}{$pet.pet_small_photo}" /></volist>
+        </td>
+        <td style="vertical-align: middle;">
+        <eq name="record.order.order_work" value="0"><a class="order_proccess" onclick="completeOrder({$record.order.order_id})">Proccessing</a></eq>
+        <eq name="record.order.order_work" value="1">Done</eq>
+        <eq name="record.order.order_work" value="2">Waiting the owner confirm</eq>
+        <eq name="record.order.order_work" value="3"><a class="order_proccess" onclick="completeOrder({$record.order.order_id})">Proccessing</a></eq>
+        </td>
+      </tr>
+    </volist>
+  </tbody></table>
+  </div>
+  <!--页码表-->
+  <div class="page_div">{$pagelist}</div>
+  <!--//页码表-->
+  </notempty>
+<!--//records-->
+
+<script src="{$Think.const.JS_URL}avatar.js"></script>

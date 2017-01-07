@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Personal Center</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+  <link href="{$Think.const.CSS_URL}jquery.confirm.css" rel='stylesheet' type='text/css' />
+	<link href="{$Think.const.CSS_URL}user.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"> </div>
+		<div class="container">
+			<h1>Personal Center</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="container">
+<div class="page">
+	<div class="page-header"><h3>
+		<if condition="($userLogin.user_type eq 1)">Owner's
+		<elseif condition="$userLogin.user_type eq 2"/>Borrower's
+		</if> Personal Information
+	<span class="code_btn_upt">
+		<input type="button" id="upt_personalInfo" value='edit'>
+	</span></h3></div>
+    <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="tab_personalInfo">
+    	<colgroup>
+	        <col class="col-xs-1">
+	        <col class="col-xs-7">
+      	</colgroup>
+      	<tbody>
+        <tr>
+          	<th scope="row"><code>Name</code></th>
+          	<td>{$user.user_firstname} {$user.user_lastname}</td>
+        </tr>
+        <tr>
+          	<th scope="row"><code>E-mail</code></th>
+          	<td>{$userLogin.user_email}</td>
+        </tr>
+        <tr>
+          	<th scope="row"><code>Phone</code></th>
+          	<td>{$user.user_phone}</td>
+        </tr>
+        <tr>
+          	<th scope="row"><code>Location</code></th>
+          	<td>{$user.user_location}</td>
+        </tr>        
+      	</tbody>
+    </table>
+  	</div>
+
+  	<!--显示owner相关信息-->
+<if condition="($userLogin.user_type eq 1)">
+  <include file="Public:owner" />
+</if>
+
+<!--显示borrower相关信息-->
+<if condition="($userLogin.user_type eq 2)">
+  <include file="Public:borrower" />
+</if>
+<!--//显示borrower相关信息-->
+  </div></div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}userCenter.js"></script>
+</body>
+</html> 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Borrowers</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+  <link href="{$Think.const.CSS_URL}user.css" rel='stylesheet' type='text/css' />
+<style type="text/css">
+.list_page{
+  text-align: center;
+  font-size: 1.5em;
+}
+</style>
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"><input type="hidden" id='page_index' value="2" /></div>
+		<div class="container">
+			<h1>Borrower Detail</h1>	
+		</div>
+</div>
+<!--content-->
+<div class="container">
+<div class="page">
+  <!--Borrower's contact-->
+  <notempty name="_SESSION.user">
+  <div class="page-header"><h3>Borrower's contact</h3></div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="tab_personalInfo">
+      <colgroup><col class="col-xs-1"><col class="col-xs-7"></colgroup>
+      <tbody>
+      <tr>
+        <th scope="row"><code>Name</code></th>
+        <td>{$borrower.user_firstname} {$borrower.user_lastname}</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>Loving times</code></th>
+        <td>{$borrower.borrower_count}</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>E-mail</code></th>
+        <td>{$borrower.user_email}</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>Phone</code></th>
+        <td>{$borrower.user_phone}</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>Location</code></th>
+        <td>{$borrower.user_location}</td>
+      </tr>        
+      </tbody>
+    </table>
+    </div></notempty>
+
+<div class="grid_3 grid_4">
+  <div class="page-header"><h3>Borrower's Profile</h3></div>
+  <div class="row">
+    <div class="col-sm-4" style='width:30%'>
+      <div class="panel panel-info">
+        <div class="panel-heading"><h3 class="panel-title">Borrower's Photo</h3></div>
+        <div class="panel-body">
+          <div class="user_avatar">
+            <img src="{$Think.const.IMG_UPLOAD}{$borrower.borrower_photo}" style="max-width:100%;max-height:300px;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4" style='width:70%'>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Borrower's Profile</h3>
+        </div>
+        <div class="panel-body" style="height:300px;">
+          <textarea class="user_profile" readonly="true" style="height: 270px;">{$borrower.borrower_profile}</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div></div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+</body>
+</html> 

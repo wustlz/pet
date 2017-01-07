@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Beg detail</title>
+	<link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}beg.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+	<div class="banner-1"><input type="hidden" id='page_index' value="1" /></div>
+	<div class="container">
+		<h1>Beg detail</h1>	
+	</div>
+</div>
+<!--content-->
+<div class="blog">
+	<div class="container">
+		<div class="blog-top">
+			<!--Beg 详细内容-->
+			<div class="col-md-9 blog-grid">
+				<div class="blog-grid3">
+				<div class=" blog-grid1">
+					<div class="text-blog">
+						<span>{$day}</span>
+						<small>{$month}<br>{$year}</small>
+						<div class="clearfix"> </div>
+					</div>
+					<ul>
+						<li><a class="heart" onclick="order({$begInfo.beg.beg_id})"><i class="glyphicon glyphicon-heart"></i></a></li>
+					</ul>
+				</div>
+				<div class="blog-grid2">
+					<div class="page-header" style="margin-top:0"><h1>Pet's Introduction</h1></div>
+					<div class="blog-text">
+					<input type="hidden" id="petSize" value="{$begInfo['listPet']|count}">
+					<foreach name="begInfo['listPet']" item="pet" key="k">
+						<if condition="$k gt 0"><div class="page-header"></div></if>
+						<img class="img-responsive" src="{$Think.const.IMG_UPLOAD}{$pet.pet_big_photo}" alt="" style="width: 700px; margin-bottom: 20px;">
+						<div class="table-responsive">
+					    <table class="table table-bordered table-striped" id="pet_detail_tab">
+					      <colgroup>
+					        <col class="col-xs-1">
+					        <col class="col-xs-7">
+					      </colgroup>
+					      <tbody>
+					      	<tr>
+					          <th scope="row"><code>Name</code></th>
+					          <td>{$pet.pet_name}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>About</code></th>
+					          <td><textarea readonly="readonly">{$pet.pet_about}</textarea></td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Feed</code></th>
+					          <td><textarea readonly="readonly">{$pet.pet_feed}</textarea></td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Breed</code></th>
+					          <td>{$pet.breed_name}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Birth</code></th>
+					          <td>{$pet.pet_birth}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row" colspan="2" style="text-align: left;border-bottom:none;"><code>The Pet gets on well with:</code></th>
+					        </tr>
+					        <tr>
+					          <th style="border-right:none;"></th>
+					          <td style="border-left:none;">
+					          	<input type="hidden" class="pet_have_{$k}" value="{$pet.pet_have}" />
+					            <input type="checkbox" name="pet_have_{$k}" value="0" disabled="disabled">Garden
+					            <input type="checkbox" name="pet_have_{$k}" value="1" disabled="disabled">Children
+					            <input type="checkbox" name="pet_have_{$k}" value="2" disabled="disabled">Other Pets
+					          </td>
+					        </tr>
+					        <tr>
+					          <th scope="row" colspan="2" style="text-align: left;border-bottom:none;"><code>The Pet would like:</code></th>
+					        </tr>
+					        <tr>
+					          <th style="border-right:none;"></th>
+					          <td style="border-left:none;">
+					          	<input type="hidden" class="pet_provide_{$k}" value="{$pet.pet_provide}" />
+					            <input type="checkbox" name="pet_provide_{$k}" value="0" disabled="disabled">Exercise
+					            <input type="checkbox" name="pet_provide_{$k}" value="1" disabled="disabled">Company
+					          </td>
+					        </tr>
+					        <tr>
+					          <th scope="row" colspan="2" style="text-align: left;border-bottom:none;"><code>The Pet want a helper at:</code></th>
+					        </tr>
+					        <tr>
+					          <th style="border-right:none;"></th>
+					          <td style="border-left:none;">
+					          	<input type="hidden" class="pet_helpTime_{$k}" value="{$pet.pet_helptime}" />
+					            <input type="checkbox" name="pet_helpTime_{$k}" value="0" disabled="disabled">Day
+					            <input type="checkbox" name="pet_helpTime_{$k}" value="1" disabled="disabled">Evening
+					            <input type="checkbox" name="pet_helpTime_{$k}" value="2" disabled="disabled">Weekend
+					            <input type="checkbox" name="pet_helpTime_{$k}" value="3" disabled="disabled">Holiday
+					          </td>
+					        </tr>
+					        <notempty name='pet.pet_notes'><tr>
+					          <th scope="row"><code>Notes</code></th>
+					          <td>{$pet.pet_notes}</td>
+					        </tr></notempty>
+					      </tbody>
+					    </table>
+					  </div>
+					</foreach>
+					  <div class="page-header"><h5>Beg's Information</h5></div>
+						<div class="table-responsive">
+					    <table class="table table-bordered table-striped" id="beg_detail_tab">
+					      <colgroup>
+					        <col class="col-xs-1">
+					        <col class="col-xs-7">
+					      </colgroup>
+					      <tbody>
+					      	<tr>
+					          <th scope="row"><code>Title</code></th>
+					          <td>{$begInfo.beg.beg_title}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Completion</code></th>
+					          <td><if condition="($beg.beg_work eq 0) OR ($beg.beg_work eq 2)">Proccessing
+						        <elseif condition="$beg.beg_work eq 3" />Waiting the borrower confirm
+						        <elseif condition="$beg.beg_work eq 1" />Done
+						        <else />Waiting for help
+						        </if>
+					          </td>
+					        </tr>
+					        <notempty name="_SESSION.user">
+					        <tr>
+					          <th scope="row"><code>Email</code></th>
+					          <td>{$begInfo.beg.beg_email}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Phone</code></th>
+					          <td>{$begInfo.beg.beg_phone}</td>
+					        </tr>
+					        <tr>
+					          <th scope="row"><code>Location</code></th>
+					          <td>{$begInfo.beg.beg_location}</td>
+					        </tr></notempty>
+					        <notempty name='begInfo.beg.beg_notes'><tr>
+					          <th scope="row"><code>Notes</code></th>
+					          <td>{$begInfo.beg.beg_notes}</td>
+					        </tr></notempty>				        
+					      </tbody>
+					    </table>
+					  </div>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+				</div>
+			</div>
+			<!--//Beg 详细内容-->			
+			<div class="col-md-3 categories-grid">
+				<div class="search-in">
+					<h2>Search</h2>
+					<div class="search">
+						<form action="__CONTROLLER__/search" method="post">
+							<input type="text">
+							<input type="submit" value="">
+						</form>
+					</div>
+				</div>
+
+				<div class="grid-categories">
+					<h4>Recent Begs</h4>
+					<volist name="beglist" id="beg" key="k" >
+					<div class="product-go">
+						<a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}" class="fashion"><img class="img-responsive " src="{$Think.const.IMG_UPLOAD}{$beg.beg.beg_photo}" alt=""></a>
+						<div class="grid-product">
+							<a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}" class="elit">
+								<if condition="($beg.beg_work eq 0) OR ($beg.beg_work eq 2)">Proccessing
+								<elseif condition="$beg.beg_work eq 3" />Waiting the borrower confirm
+								<elseif condition="$beg.beg_work eq 1" />Done
+								<else />Waiting for help
+								</if>
+							</a>
+							<p>{$beg.beg.beg_title}</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					</volist>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		
+	</div>
+	</div>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}beg.js"></script>
+<script src="{$Think.const.JS_URL}owner.js"></script>
+</body>
+</html> 

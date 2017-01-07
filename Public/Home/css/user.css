@@ -1,0 +1,194 @@
+/*新增样式  针对个人中心*/
+/*右上方的编辑按钮*/
+.code_btn_upt a, .code_btn_upt input[type=button]{
+	/*clear: both;*/
+	float: right;
+	margin-top: 12px; 
+	background-color: #fff;
+	color: #DCDCDC;
+    border: none;
+    font-size: 0.5em;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.code_btn_upt a:hover, .code_btn_upt input[type=button]:hover{
+	color: #FF0000;
+}
+/*table中添加的input样式*/
+.table input[type=text]{
+	width: 85%;
+}
+.table input[type=button]{
+	width: 10%;
+	padding: 0px 10px;
+	margin-top: 3px;
+	/*margin-bottom: 0px;*/
+	margin-right: 10px;  
+	background-color: #87CEFA;
+	color: #ffffff;
+	font-size: 1em;
+}
+
+/*Owner pet_birth*/
+.pet_edit_span, .pet_birth_span{
+	display: inline-block;
+	float: right;
+}
+.pet_edit_span a, .pet_del_span a{
+	padding-left: 10px;
+	color: #a2c4c9;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+.pet_edit_span a:hover, .pet_del_span a:hover{
+	color: #FF0000;
+	cursor: pointer;
+}
+.pet_img{
+	width: 100%;
+	text-align: center;
+}
+.pet_img img{
+	max-width: 100%;
+	height: 200px;
+}
+.pet_textarea{
+	resize:none;
+	width:100%;
+	height:105px;
+	border-radius:4px;
+	border:none;
+	-web-kit-appearance:none;
+	-moz-appearance: none;
+}
+.panel-body>input[type='checkbox']{
+	margin-left: 2px;
+	vertical-align: text-top;
+    width: 25px;
+    height: 16px;
+}
+.beg_pet_img img{
+	display: block;
+	margin-top: 10px;
+}
+.beg_more_span a, .pet_del_span a{
+	display: block;
+	float: left;
+	margin-left: 10px;
+	color: #a2c4c9;
+	cursor: pointer;
+}
+.beg_more_span a:hover, .pet_del_span a:hover{
+	color: #FF0000;
+	cursor: pointer;
+}
+.page_div{
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em;
+}
+.page_div a:hover{
+	color: #FF0000;
+}
+
+/*用户头像*/
+.user_avatar{
+	width: 100%;
+	text-align: center;
+}
+.user_avatar img{
+	max-width: 490px;
+	max-height: 200px;
+}
+.user_avatar input[type=submit]{
+	color: #000;
+}
+.user_avatar input[type=submit]:hover{
+	color: #FF0000;
+}
+.user_upt_btn{
+	display: block;
+	width: 20%;
+	margin-left: 40%;
+	margin-top: 10px;
+	background-color: #fff;
+	border: none;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #DCDCDC;
+}
+
+#upt_avatar_html input[type=button]{
+	color: #000;
+}
+.user_upt_btn:hover, #upt_avatar_html input[type=button]:hover{
+	color: #FF0000;
+}
+
+.photo_warn{
+	margin-top: 10px;
+	width: 100%;
+	text-align: center;
+	color: #FF0000;
+}
+.upt_btn_two{
+	/*margin-left: 12%;
+	margin-right: 12%;*/
+	width: 80px;
+	margin-top: 10px;
+	background-color: #bce8f1;
+	border: none;
+	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000;
+}
+.upt_btn_two:hover{
+	color: #FF0000;
+}
+
+/*Borrower 个人画像*/
+.user_profile{
+	width: 100%;
+	height: 225px;
+	border: none;
+	/*border: 1px solid #DCDCDC;*/
+	resize: none;
+	background-color: #ffffff;
+}
+#sub_profile, #cancel_profile{
+	width: 15%;
+	margin-left: 22%;
+	margin-top: 5px;
+	color: #000;
+    background-color: #bce8f1;
+	border: none;
+	/*font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+}
+#sub_profile:hover, #cancel_profile:hover{
+	color: #FF0000;
+}
+#borrower_order_pet_td img{
+	display: block;
+	float: left;
+	margin-top: 10px;
+}
+
+/*用户头像*/
+#preview img{
+	max-width: 490px;
+	max-height: 300px;
+}
+
+/*beg_pet_photo*/
+.beg_pet_photo{
+	width: 100px;
+}
+.table th, .table td{
+	vertical-align: middle;
+}
+
+/*order确认完成按钮*/
+.order_proccess{
+	/*color: #000000;*/
+	cursor: pointer;
+}
+.order_proccess:hover{
+	color: #FF0000;
+}

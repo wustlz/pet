@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+    <!--top--> 
+    <include file="Public:top" />
+    <!--//top-->
+    <!--nav-->
+    <include file="Public:nav" />
+    <!--//nav-->
+    <!--content-->
+    <div class="content">
+        <div class="header"><h1 class="page-title">Case list</h1></div>
+        <div class="main-content">
+        <div class="btn-toolbar list-toolbar">
+            <a class="btn btn-primary" href="__CONTROLLER__/addCase"><i class="fa fa-plus"></i> Add Case</a>
+            <div class="btn-group"></div>
+        </div>
+        <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th width="20%">title</th>
+                <th>time</th>
+                <th>photo</th>
+                <th width="50%">content</th>
+                <th style="width: 3.5em;"></th>
+                <th style="width: 3.5em;"></th>
+            </tr>
+        </thead>
+        <tbody>
+        <volist name="caselist" id="case" key="k" >
+            <tr>
+                <td style="vertical-align: middle;">{$k}</td>
+                <td style="vertical-align: middle;">{$case.case_title}</td>
+                <td style="vertical-align: middle;width:150px;">{$case.case_time}</td>
+                <td><img style="width: 150px" src="{$Think.const.IMG_UPLOAD}{$case.case_small_photo}" /></td>
+                <td style="vertical-align: middle;"><textarea style="resize:none;width:95%;height:90px;border:none;">{$case.case_content}</textarea></td>
+                <td style="vertical-align: middle;"><a href="__CONTROLLER__/uptCase/id/{$case.case_id}"><i class="fa fa-pencil"></i></a></td>
+                <td style="vertical-align: middle;"><a href="__CONTROLLER__/delCase/id/{$case.case_id}" role="button" data-toggle="modal"><i class="fa fa-trash-o"></i></a></td>
+                
+            </tr>
+        </volist>
+        </tbody>
+        </table>
+        <!--页码-->
+        <div class="list_page">{$pagelist}</div>
+        <!--//页码-->
+        </div>
+    </div>
+    <!--//content-->
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cases</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+  <style type="text/css">
+/*页码页表*/
+.list_page{
+    width: 75%;
+    height: 60px;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+    font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+  </style>
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+  <div class="banner-1"><input type="hidden" id='page_index' value="4" /></div>
+  <div class="container"><h1>Cases</h1></div>
+</div>
+<div class="blog">
+  <div class="container">
+    <div class="blog-top">
+      <div class="col-md-9 blog-grid">
+        <volist name="caselist" id="case" key="k" >
+        <div class="blog-grid3">
+          <div class=" blog-grid1">
+            <div class="text-blog">
+              <span>{$case.day}</span>
+              <small>{$case.month}<br>{$case.year}</small>
+              <div class="clearfix"> </div>
+            </div>
+            <ul>
+              <li><a class="heart"><i class="glyphicon glyphicon-heart"></i></a></li>
+            </ul>
+          </div>
+          <div class=" blog-grid2">
+            <a><img style="width: 700px;" src="{$Think.const.IMG_UPLOAD}{$case.case.case_big_photo}" class="img-responsive" alt=""></a>
+            <div class="blog-text">
+              <h5><a>{$case.case.case_title}</a></h5>
+              <p>{$case.case.case_content}</p>           
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div></volist>
+      </div>
+      <div class="col-md-3 categories-grid">
+        <div class="search-in">
+          <h2>Search</h2>
+            <div class="search">
+              <form action="__CONTROLLER__/search" method="post">
+                <input type="text" name="search_key" value="{$_SESSION.search_case_key}">
+                <input type="submit" value="">
+              </form>
+            </div>
+        </div>
+        <div class="grid-categories">
+          <h4>Recent Begs</h4>
+          <volist name="beglist" id="beg" key="k" >
+          <div class="product-go">
+            <a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}" class="fashion"><img class="img-responsive " src="{$Think.const.IMG_UPLOAD}{$beg.beg.beg_photo}" alt=""></a>
+            <div class="grid-product">
+              <a href="__CONTROLLER__/detailBeg/id/{$beg.beg.beg_id}" class="elit">
+                <if condition="($beg.beg_work eq 0) OR ($beg.beg_work eq 2)">Proccessing
+                <elseif condition="$beg.beg_work eq 3" />Waiting the borrower confirm
+                <elseif condition="$beg.beg_work eq 1" />Done
+                <else />Waiting for help
+                </if>
+              </a>
+              <p>{$beg.beg.beg_title}</p>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+          </volist>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <div class="nation">
+      <!--页码页表-->
+      <div class="list_page">{$pagelist}</div>
+      <!--//页码页表-->
+    </div>
+  </div>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+</body>
+</html> 

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<!--head--> 
+<include file="Public:head" />
+<!--//head-->
+<body class=" theme-blue">
+
+  <!--top--> 
+  <include file="Public:top" />
+  <!--//top-->
+
+  <!--左侧菜单-->
+  <include file="Public:nav" />
+  <!--//左侧菜单-->
+<!--content-->
+  <div class="content">
+    <div class="header"><h1 class="page-title">Admin Managers</h1></div>
+    <div class="main-content">
+      <div class="dialog">
+        <div class="panel panel-default">
+          <p class="panel-heading no-collapse">New Admin Manager</p>
+          <div class="panel-body">
+            <form action="__CONTROLLER__/addAdmin" method="post">
+              <div class="form-group">
+                <label>Username</label>
+                <input type="text" name='admin_name' class="form-control span12">
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" name='admin_email' class="form-control span12">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name='admin_phone' class="form-control span12">
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Default password is admin" class="form-controlspan12 form-control" disabled="true">
+              </div>
+              <notempty name='backMsg'><div class="form-group"><label style="color:#ff0000;">{$backMsg}</label></div>                </notempty>
+              <input class="btn btn-primary pull-right" type="submit" value="Add">
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</body></html>

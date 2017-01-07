@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Release Beg</title>
+  <link rel='icon' href='{$Think.const.IMG_URL}pet.ico' type='image/x-ico' />
+	<link href="{$Think.const.CSS_URL}beg.css" rel='stylesheet' type='text/css' />
+	<link href="{$Think.const.CSS_URL}user.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<!--header-->	
+<include file="Public:header" />
+<!--//header-->
+<!--content-->
+<div class="banner-head">
+  <div class="banner-1"> </div>
+    <div class="container">
+      <h1>Beg Detail</h1>  
+    </div>
+</div>
+<!--content-->
+<div class="container">
+  <div class="page">
+  <div class="bs-example" data-example-id="simple-horizontal-form">
+    <form class="form-horizontal">
+      <div class="page-header" style="margin-top:0"><h1>Beg's Information</h1></div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Owner's Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="{$beg.beg_email}" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Owner's Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="{$beg.beg_phone}" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Owner's Location</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="{$beg.beg_location}" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Beg's Title</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="{$beg.beg_title}" readonly="readonly">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Beg's Notes</label>
+        <div class="col-sm-10">
+          <empty name='beg["beg_notes"]'><textarea readonly="readonly">The Owner did't leave notes.</textarea></empty>
+          <notempty name='beg["beg_notes"]'><textarea readonly="readonly">{$beg.beg_notes}</textarea></notempty>
+        </div>
+      </div>
+    </form>
+  </div>
+	<!--//forms-->
+  <div class="page-header"><h1>Pets' Information</h1></div>
+  <input type="hidden" id="petSize" value="{$beg['listPet']|count}">
+  <foreach name="beg['listPet']" item="pet" key="k">
+    <div class="alert alert-info" role="alert">
+      <span>{$pet.pet_name}</span>
+    </div>
+    <div class="row">
+      <!-- 1st col -->
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <span>Breed: <strong>{$pet.breed_id}</strong></span>
+              <span class="pet_birth_span">BirthDay: <strong>{$pet.pet_birth}</strong></span>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="pet_img"><img src="{$Think.const.IMG_UPLOAD}{$pet.pet_big_photo}" /></div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{$pet.pet_name} would like:</h3>
+          </div>
+          <div class="panel-body">
+            <input type="hidden" class="pet_provide_{$k}" value="{$pet.pet_provide}" />
+            <input type="checkbox" name="pet_provide_{$k}" value="0" disabled="disabled">Exercise
+            <input type="checkbox" name="pet_provide_{$k}" value="1" disabled="disabled">Company
+          </div>
+        </div>
+      </div>
+      <!-- 2nd col -->
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Pet's About</h3>
+          </div>
+          <div class="panel-body">
+            <textarea readonly="readonly" class="pet_textarea">{$pet.pet_about}</textarea>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Pet's Feed</h3>
+          </div>
+          <div class="panel-body">
+            <textarea readonly="readonly" class="pet_textarea">{$pet.pet_feed}</textarea>
+          </div>
+        </div>
+      </div>
+      <!-- 3rd col -->
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Pet's Notes</h3>
+          </div>
+          <div class="panel-body">
+            <textarea readonly="readonly" class="pet_textarea" style="height:79px;" placeholder='There is no notes...'>{$pet.pet_notes}</textarea>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{$pet.pet_name} gets on well with:</h3>
+          </div>
+          <div class="panel-body">
+            <input type="hidden" class="pet_have_{$k}" value="{$pet.pet_have}" />
+            <input type="checkbox" name="pet_have_{$k}" value="0" disabled="disabled">Garden
+            <input type="checkbox" name="pet_have_{$k}" value="1" disabled="disabled">Children
+            <input type="checkbox" name="pet_have_{$k}" value="2" disabled="disabled">Other Pets
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">{$pet.pet_name} want a helper at:</h3>
+          </div>
+          <div class="panel-body">
+            <input type="hidden" class="pet_helpTime_{$k}" value="{$pet.pet_helptime}" />
+            <input type="checkbox" name="pet_helpTime_{$k}" value="0" disabled="disabled">Day
+            <input type="checkbox" name="pet_helpTime_{$k}" value="1" disabled="disabled">Evening
+            <input type="checkbox" name="pet_helpTime_{$k}" value="2" disabled="disabled">Weekend
+            <input type="checkbox" name="pet_helpTime_{$k}" value="3" disabled="disabled">Holiday
+          </div>
+        </div>
+      </div><!-- /.col-sm-4 -->
+    </div>
+  </foreach>
+	</div>
+</div>
+<!--//content-->
+<!--footer-->
+<include file="Public:footer" />
+<!--//footer-->
+<script src="{$Think.const.JS_URL}owner.js"></script>
+</body>
+</html> 
